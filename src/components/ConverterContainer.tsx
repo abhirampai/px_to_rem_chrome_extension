@@ -36,7 +36,9 @@ const ConverterContainer = () => {
         type="number"
         step="any"
       />
-      <p className="text-center text-medium">↑↓</p>
+      <p className="text-center text-medium">
+        <img src="../icons/128.png" alt="icon" className="w-48" />
+      </p>
       <h2>Rem</h2>
       <input
         value={remInput}
@@ -45,9 +47,18 @@ const ConverterContainer = () => {
         step="any"
       />
 
-      <h5 className="text-center">
+      <h4 className="text-center">
         Calculation based on a root font-size of {conversionRate} pixel.
-      </h5>
+      </h4>
+
+      <h6 className="text-center">
+        <a
+          href="https://www.flaticon.com/free-icons/exchange"
+          title="exchange icons"
+        >
+          Exchange icons created by Freepik - Flaticon
+        </a>
+      </h6>
     </div>
   );
 };
