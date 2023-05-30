@@ -1,52 +1,55 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const ConverterContainer = () => {
-  const conversionInputRef = useRef<any>();
-
-  const [conversionInput, setConversionInput] = useState<number>(0);
+  const [pxInput, setPxInput] = useState<any>();
   const [conversionRate] = useState(16);
-  const [conversionOutput, setConversionOutput] = useState<any>();
+  const [remInput, setRemInput] = useState<any>();
 
-  const changeConversionInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setConversionInput(Number(e.target.value));
+  const changeConversionInput = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    type: string = "rem"
+  ) => {
+    const input = Number(e.target.value);
+    if (type === "rem") {
+      setRemInput(input);
+      conversionFunction(input, "px");
+    } else {
+      setPxInput(input);
+      conversionFunction(input);
+    }
   };
 
-  const onConvert = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const output = (conversionInput * 1) / conversionRate;
-    setConversionOutput(output);
+  const conversionFunction = (input: number, type: string = "rem") => {
+    let output = 0;
+
+    if (type === "rem") {
+      setRemInput((input * 1) / conversionRate);
+    } else {
+      setPxInput((output = input * conversionRate));
+    }
   };
-
-  useEffect(() => {
-    const inputRef = conversionInputRef.current;
-    inputRef.addEventListener(
-      "keypress",
-      (event: React.KeyboardEvent<HTMLInputElement> | any) => {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          const output = (event.target?.value * 1) / conversionRate;
-          setConversionOutput(output);
-        }
-      }
-    );
-
-    return () => inputRef.removeEventListener("keypress");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); 
 
   return (
     <div className="converter-container">
-      <h4>Px</h4>
+      <h2>Px</h2>
       <input
-        ref={conversionInputRef}
-        value={conversionInput}
-        onChange={changeConversionInput}
+        value={pxInput}
+        onChange={(e) => changeConversionInput(e, "px")}
+        type="number"
+        step="any"
       />
-      <button className="mt-12" onClick={onConvert}>
-        Convert
-      </button>
-      <h4>Rem</h4>
-      <input value={conversionOutput} disabled />
+      <p className="text-center text-medium">↑↓</p>
+      <h2>Rem</h2>
+      <input
+        value={remInput}
+        onChange={(e) => changeConversionInput(e, "rem")}
+        type="number"
+        step="any"
+      />
+
+      <h5 className="text-center">
+        Calculation based on a root font-size of {conversionRate} pixel.
+      </h5>
     </div>
   );
 };
