@@ -1,6 +1,6 @@
 const Header = () => {
     return ( <h1>
-        Px to Rem converter
+        PX to REM converter
     </h1> );
 }
  
