@@ -20,12 +20,10 @@ const ConverterContainer = () => {
   };
 
   const conversionFunction = (input: number, type: string = "rem") => {
-    let output = 0;
-
     if (type === "rem") {
       setRemInput((input * 1) / conversionRate);
     } else {
-      setPxInput((output = input * conversionRate));
+      setPxInput(input * conversionRate);
     }
   };
 
