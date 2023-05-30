@@ -8,12 +8,31 @@
   height: 15rem;
 }
 
-.mt-12 {
-  margin-top: 0.75rem;
-}
-
-.main, .converter-container {
+.main,
+.converter-container {
   display: flex;
   flex-direction: column;
   text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+input {
+  border: black 0.125rem solid;
+  border-radius: 0.125rem;
+  padding: 0.25rem;
+}
+
+.text-medium {
+  font-size: 1.5rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }

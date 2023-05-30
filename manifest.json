@@ -2,9 +2,9 @@
     "version": "1.0.0",
     "manifest_version": 3,
     "name": "Px to Rem Chrome Extension",
-    "description": "This is a Chrome extension built with React and TypeScript",
+    "description": "This is a Chrome extension that does bidirectional conversion of PX to REM",
     "action": {
         "default_popup": "js/index.html",
-        "default_title": "Px to Rem Chrome Extension"
+        "default_title": "PX to REM Chrome Extension"
     }
 }
