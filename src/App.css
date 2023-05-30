@@ -1,9 +1,19 @@
 .app {
-    color: white;
-    text-align: center;
+  color: black;
+  text-align: center;
 }
 
 .container {
-    width: 15rem;
-    height: 15rem;
+  width: 25rem;
+  height: 15rem;
+}
+
+.mt-12 {
+  margin-top: 0.75rem;
+}
+
+.main, .converter-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
